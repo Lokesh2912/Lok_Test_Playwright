@@ -41,35 +41,7 @@ test('searches for a product and displays results', async ({ page }) => {
 });
 
 test('adds a product to the cart and verifies confirmation', async ({ page }) => {
-  await openPrestaShopDemo(page);
-
-  const frame = getPrestaShopFrame(page);
-  await waitForStorefront(frame);
-
-  const productName = 'Hummingbird';
-  const searchInput = getSearchInput(frame);
-  await expect(searchInput).toBeVisible({ timeout: PRESTASHOP_TIMEOUT });
-  await searchInput.fill(productName);
-  await searchInput.press('Enter');
-
-  const productLink = getProductLink(frame, productName);
-  await expect(productLink).toBeVisible({ timeout: PRESTASHOP_TIMEOUT });
-  await productLink.click();
-
-  const addToCartButton = getAddToCartButton(frame);
-  await expect(addToCartButton).toBeVisible({ timeout: PRESTASHOP_TIMEOUT });
-  await addToCartButton.click();
-
-  await frame.waitForSelector('.cart-content, .modal, .blockcart', {
-  timeout: 15000
-});
-
-await expect(
-  frame.getByText(/product successfully added/i)
-).toBeVisible();
-});
-
-test('proceeds to checkout after adding a product to cart', async ({ page }) => {
+  test.setTimeout(60_000);
   await openPrestaShopDemo(page);
 
   const productName = 'Hummingbird';
@@ -78,9 +50,25 @@ test('proceeds to checkout after adding a product to cart', async ({ page }) => 
   await addToCart(page);
 
   const frame = getPrestaShopFrame(page);
-  await frame.waitForSelector('.cart-content, .modal, .blockcart', {
-  timeout: 15000
+  const cartConfirmationDialog = getCartConfirmationDialog(frame);
+  await expect(cartConfirmationDialog).toBeVisible({ timeout: PRESTASHOP_TIMEOUT });
+  await expect(cartConfirmationDialog.getByText(/product successfully added/i)).toBeVisible({
+    timeout: PRESTASHOP_TIMEOUT
+  });
 });
+
+test('proceeds to checkout after adding a product to cart', async ({ page }) => {
+  test.setTimeout(60_000);
+  await openPrestaShopDemo(page);
+
+  const productName = 'Hummingbird';
+  await searchProduct(page, productName);
+  await openProduct(page, productName);
+  await addToCart(page);
+
+  const frame = getPrestaShopFrame(page);
+  const cartConfirmationDialog = getCartConfirmationDialog(frame);
+  await expect(cartConfirmationDialog).toBeVisible({ timeout: PRESTASHOP_TIMEOUT });
 
   const proceedToCheckoutLink = getProceedToCheckoutLink(frame);
   await expect(proceedToCheckoutLink).toBeVisible({ timeout: PRESTASHOP_TIMEOUT });
