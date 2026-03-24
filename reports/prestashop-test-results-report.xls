@@ -1,0 +1,134 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:x="urn:schemas-microsoft-com:office:excel"
+      xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+  <meta charset="utf-8">
+  <title>PrestaShop Test Execution Report</title>
+  <style>
+    body { font-family: Calibri, Arial, sans-serif; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #b7c7d6; padding: 8px; vertical-align: top; }
+    th { background: #dbeaf7; font-weight: 700; }
+    .title { font-size: 20px; font-weight: 700; color: #17324d; }
+    .subtitle { color: #4e657d; }
+    .pass { background: #e7f6ed; color: #1d6f42; font-weight: 700; }
+    .flaky { background: #fff4db; color: #9a6a00; font-weight: 700; }
+    .fail { background: #fdeaea; color: #a12626; font-weight: 700; }
+    .section { background: #eef5fb; font-weight: 700; color: #17324d; }
+    .mono { font-family: Consolas, "Courier New", monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <td colspan="5" class="title">PrestaShop Demo Playwright Test Execution Report</td>
+    </tr>
+    <tr>
+      <td colspan="5" class="subtitle">Generated from executed automated test cases on 2026-03-24</td>
+    </tr>
+    <tr><td colspan="5"></td></tr>
+
+    <tr><td colspan="5" class="section">Execution Summary</td></tr>
+    <tr>
+      <th>Metric</th>
+      <th>Value</th>
+      <th>Metric</th>
+      <th>Value</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>Total Executed Tests</td>
+      <td>5</td>
+      <td>Total Attempts</td>
+      <td>6</td>
+      <td>One retry occurred for a flaky cart test.</td>
+    </tr>
+    <tr>
+      <td>Passed</td>
+      <td class="pass">4</td>
+      <td>Flaky</td>
+      <td class="flaky">1</td>
+      <td>No permanently failed tests in the final result set.</td>
+    </tr>
+    <tr>
+      <td>Failed</td>
+      <td class="fail">0</td>
+      <td>Execution Duration</td>
+      <td>83.75s</td>
+      <td>Playwright JSON run duration.</td>
+    </tr>
+
+    <tr><td colspan="5"></td></tr>
+    <tr><td colspan="5" class="section">Detailed Results</td></tr>
+    <tr>
+      <th>Test Case</th>
+      <th>Final Status</th>
+      <th>Attempts</th>
+      <th>Duration</th>
+      <th>Remarks</th>
+    </tr>
+    <tr>
+      <td>loads the PrestaShop storefront inside the demo iframe</td>
+      <td class="pass">Passed</td>
+      <td>1</td>
+      <td>14.48s</td>
+      <td>Storefront iframe loaded successfully.</td>
+    </tr>
+    <tr>
+      <td>searches for a product and displays results</td>
+      <td class="pass">Passed</td>
+      <td>1</td>
+      <td>7.00s</td>
+      <td>Search for Hummingbird returned visible results.</td>
+    </tr>
+    <tr>
+      <td>adds a product to the cart and verifies confirmation</td>
+      <td class="flaky">Flaky</td>
+      <td>2</td>
+      <td>Attempt 1: 28.34s, Retry: 10.09s</td>
+      <td>First attempt timed out clicking Add to cart, retry passed.</td>
+    </tr>
+    <tr>
+      <td>proceeds to checkout after adding a product to cart</td>
+      <td class="pass">Passed</td>
+      <td>1</td>
+      <td>9.39s</td>
+      <td>Proceed to checkout navigation succeeded.</td>
+    </tr>
+    <tr>
+      <td>loads the admin login page via back-office URL</td>
+      <td class="pass">Passed</td>
+      <td>1</td>
+      <td>7.96s</td>
+      <td>Back-office login form loaded in iframe.</td>
+    </tr>
+
+    <tr><td colspan="5"></td></tr>
+    <tr><td colspan="5" class="section">Failure Details</td></tr>
+    <tr>
+      <th>Rank</th>
+      <th colspan="2">Failure Area</th>
+      <th colspan="2">Error Message</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td colspan="2">Add To Cart Click Timeout</td>
+      <td colspan="2" class="mono">TimeoutError: locator.click: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('iframe[name="framelive"]').contentFrame().getByRole('button', { name: /add to cart/i })</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td colspan="2">Source Location</td>
+      <td colspan="2" class="mono">at addToCart (C:\Users\wac\Desktop\Test Evaluation\src\prestashop-iframe.ts:81:27)
+at C:\Users\wac\Desktop\Test Evaluation\tests\prestashop-demo.spec.ts:50:3</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td colspan="2">Execution Pattern</td>
+      <td colspan="2" class="mono">The test "adds a product to the cart and verifies confirmation"
+failed on the first attempt and passed on retry #1, which indicates a timing-related flaky interaction.</td>
+    </tr>
+  </table>
+</body>
+</html>

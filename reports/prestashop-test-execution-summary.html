@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrestaShop Playwright Test Execution Summary</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --panel: #ffffff;
+      --text: #17324d;
+      --muted: #5f7388;
+      --border: #d8e2ec;
+      --pass: #1f8f5f;
+      --fail: #c23b3b;
+      --flaky: #c18412;
+      --accent: #0f5ea8;
+      --shadow: 0 10px 30px rgba(17, 42, 70, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, #eef4fa 0%, #f8fbfd 100%);
+      color: var(--text);
+    }
+
+    .wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 40px 24px 56px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f5ea8 0%, #1d7bc9 100%);
+      color: #fff;
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .metric {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section {
+      margin-top: 28px;
+    }
+
+    .section h2 {
+      margin: 0 0 14px;
+      font-size: 22px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 16px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    th,
+    td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      background: #edf4fb;
+      color: #23425f;
+      font-size: 14px;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .pass {
+      background: rgba(31, 143, 95, 0.12);
+      color: var(--pass);
+    }
+
+    .fail {
+      background: rgba(194, 59, 59, 0.12);
+      color: var(--fail);
+    }
+
+    .flaky {
+      background: rgba(193, 132, 18, 0.12);
+      color: var(--flaky);
+    }
+
+    .failure-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .failure h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .failure p {
+      margin: 0 0 10px;
+      color: var(--muted);
+    }
+
+    pre {
+      margin: 0;
+      padding: 14px;
+      border-radius: 14px;
+      background: #10263d;
+      color: #eaf3fb;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>PrestaShop Demo Test Execution Summary</h1>
+      <p>Playwright headed execution report for the PrestaShop iframe test suite.</p>
+      <div class="meta">
+        <div class="card">
+          <div class="metric">5</div>
+          <div class="label">Total Tests</div>
+        </div>
+        <div class="card">
+          <div class="metric">4</div>
+          <div class="label">Passed</div>
+        </div>
+        <div class="card">
+          <div class="metric">0</div>
+          <div class="label">Failed</div>
+        </div>
+        <div class="card">
+          <div class="metric">1</div>
+          <div class="label">Flaky</div>
+        </div>
+        <div class="card">
+          <div class="metric">1.5m</div>
+          <div class="label">Execution Time</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Execution Overview</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Count</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="status pass">Passed</span></td>
+            <td>4</td>
+            <td>Storefront load, search flow, checkout flow, and admin login verification passed.</td>
+          </tr>
+          <tr>
+            <td><span class="status fail">Failed</span></td>
+            <td>0</td>
+            <td>No permanently failed tests remained after Playwright retries.</td>
+          </tr>
+          <tr>
+            <td><span class="status flaky">Flaky</span></td>
+            <td>1</td>
+            <td>`adds a product to the cart and verifies confirmation` failed on first attempt and passed on retry.</td>
+          </tr>
+          <tr>
+            <td>Total Attempts</td>
+            <td>6</td>
+            <td>5 scheduled tests plus 1 retry execution.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Test Case Summary</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Test Case</th>
+            <th>Status</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>loads the PrestaShop storefront inside the demo iframe</td>
+            <td><span class="status pass">Passed</span></td>
+            <td>13.7s</td>
+          </tr>
+          <tr>
+            <td>searches for a product and displays results</td>
+            <td><span class="status pass">Passed</span></td>
+            <td>7.5s</td>
+          </tr>
+          <tr>
+            <td>adds a product to the cart and verifies confirmation</td>
+            <td><span class="status flaky">Flaky</span></td>
+            <td>28.9s initial run, 12.1s retry</td>
+          </tr>
+          <tr>
+            <td>proceeds to checkout after adding a product to cart</td>
+            <td><span class="status pass">Passed</span></td>
+            <td>14.3s</td>
+          </tr>
+          <tr>
+            <td>loads the admin login page via back-office URL</td>
+            <td><span class="status pass">Passed</span></td>
+            <td>8.1s</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Top 3 Failures</h2>
+      <div class="failure-list">
+        <article class="card failure">
+          <h3>1. Add To Cart Click Timeout</h3>
+          <p>Observed during the first attempt of <strong>adds a product to the cart and verifies confirmation</strong>.</p>
+          <pre>TimeoutError: locator.click: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('iframe[name="framelive"]').contentFrame().getByRole('button', { name: /add to cart/i })</pre>
+        </article>
+
+        <article class="card failure">
+          <h3>2. Shared Stack Trace Location</h3>
+          <p>The timeout originated in the reusable iframe helper used by the cart flow.</p>
+          <pre>at addToCart (C:\Users\wac\Desktop\Test Evaluation\src\prestashop-iframe.ts:81:27)
+at C:\Users\wac\Desktop\Test Evaluation\tests\prestashop-demo.spec.ts:50:3</pre>
+        </article>
+
+        <article class="card failure">
+          <h3>3. Flaky First Attempt In Cart Confirmation Flow</h3>
+          <p>The test recovered on retry, indicating a timing-related instability rather than a consistent functional failure.</p>
+          <pre>Test: adds a product to the cart and verifies confirmation
+Initial run: Failed after 28.9s
+Retry #1: Passed in 12.1s</pre>
+        </article>
+      </div>
+      <p class="note">Report interpretation: although the suite completed with 4 passed tests and 1 flaky test, the cart flow still shows an intermittent timing issue around the Add to cart interaction.</p>
+    </section>
+  </div>
+</body>
+</html>
